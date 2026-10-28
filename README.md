@@ -63,7 +63,7 @@ Written with the help of Claude (Anthropic).
 <a name="中文"></a>
 ## 中文
 
-拉瓦尔大学 PEPS [自由游泳时间表](https://peps.ulaval.ca/activite/bains-libres)的订阅日历，可以直接添加到 Google 日历、Apple 日历或 Outlook，不需要安装任何东西。
+拉瓦尔大学 PEPS [自由游泳时间表](https://peps.ulaval.ca/activite/bains-libres)的订阅日历，可以直接添加到 Google 日历、Apple 日历或 Outlook。
 
 ### 如何订阅
 
@@ -73,11 +73,11 @@ Written with the help of Claude (Anthropic).
 
 一共有六个日历：所有游泳场、奥林匹克池、跳板池、25 米及以上泳道、50 米泳道、家庭场。
 
-日历每周日中午自动更新。Google 对订阅日历大约每天刷新一次。
+日历每周日中午自动更新。
 
 ### 工作原理
 
-每周日，GitHub Actions 会下载 PEPS 的时间表，用 [UL-PEPS-piscine-calendar](https://github.com/XiyueZ1/UL-PEPS-piscine-calendar) 里的程序转换成日历。想在自己电脑上运行这个程序，请看那个仓库。
+每周日，GitHub Actions 会下载 PEPS 的时间表，用 [UL-PEPS-piscine-calendar](https://github.com/XiyueZ1/UL-PEPS-piscine-calendar) 里的程序转换成日历。想在自己电脑上运行这个程序，直接下载该程序。
 
 ### 说明
 
