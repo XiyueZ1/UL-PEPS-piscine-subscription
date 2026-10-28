@@ -54,6 +54,10 @@
   [data-l] { display: none; }
   body.fr [data-l="fr"], body.en [data-l="en"], body.zh [data-l="zh"] { display: revert; }
 </style>
+<!-- 访问统计（GoatCounter）：不用 cookie，不收集个人信息。
+     统计页面: https://peps-piscine.goatcounter.com -->
+<script data-goatcounter="https://peps-piscine.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </head>
 <body class="fr">
 <main>
@@ -155,6 +159,15 @@
     open: { fr: "Ouvrir", en: "Open", zh: "打开" },
   };
   const base = new URL(".", location.href);
+
+  // 记录按钮点击（复制或打开某个日历），在 GoatCounter 里显示为事件
+  function track(action, file) {
+    try {
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: action + "-" + file.replace(".ics", ""), title: action + " " + file, event: true });
+      }
+    } catch (e) {}
+  }
   let lang = "fr";
   try { const s = localStorage.getItem("lang"); if (s) lang = s; } catch (e) {}
 
@@ -178,6 +191,7 @@
       const btn = div.querySelector("button");
       btn.textContent = LABEL.copy[lang];
       btn.addEventListener("click", async () => {
+        track("copy", c.file);
         try { await navigator.clipboard.writeText(url); }
         catch (e) { input.select(); document.execCommand("copy"); }
         btn.textContent = LABEL.copied[lang];
@@ -186,6 +200,7 @@
       });
       const a = div.querySelector("a");
       a.href = webcal;
+      a.addEventListener("click", () => track("open", c.file));
       a.textContent = LABEL.open[lang];
       box.appendChild(div);
     }
