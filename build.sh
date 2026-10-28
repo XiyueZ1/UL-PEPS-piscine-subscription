@@ -41,4 +41,4 @@ make 25m-plus.ics  "PEPS piscine 25m+"      --min-length 25
 make 50m.ics       "PEPS piscine 50m"       --length 50
 make family.ics    "PEPS bains pour tous"   --type tous
 
-date -u +"%Y-%m-%d %H:%M UTC" > "$OUT/last-update.txt"
+TZ=America/Toronto date +"%Y-%m-%d %H:%M %Z" > "$OUT/last-update.txt"
