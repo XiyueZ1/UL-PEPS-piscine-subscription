@@ -38,7 +38,7 @@ Code écrit avec l'aide de Claude (Anthropic).
 <a name="english"></a>
 ## English
 
-Calendars of the PEPS [free swim schedule](https://peps.ulaval.ca/activite/bains-libres) at Université Laval, ready to add to Google Calendar, Apple Calendar or Outlook. No installation needed.
+Calendars of the PEPS [swimming pool schedule](https://peps.ulaval.ca/activite/bains-libres) at Université Laval, ready to add to Google Calendar, Apple Calendar or Outlook. No installation needed.
 
 ### How to subscribe
 
