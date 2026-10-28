@@ -1,0 +1,84 @@
+name: update-calendar
+
+on:
+  schedule:
+    # 每周日魁北克时间中午 12 点运行。
+    # GitHub 只认 UTC 时间，而魁北克有夏令时（夏天 UTC-4，冬天 UTC-5），
+    # 所以在 UTC 16 点和 17 点各触发一次，再由下面的 check 步骤只放行魁北克 12 点那一次。
+    - cron: "0 16,17 * * 0"
+  # 允许在 Actions 页面手动运行
+  workflow_dispatch:
+  # 改了网页或生成脚本后，自动重新发布
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.time.outputs.go }}
+    steps:
+      - id: time
+        run: |
+          hour=$(TZ=America/Toronto date +%H)
+          echo "Québec time: $(TZ=America/Toronto date)"
+          if [ "${{ github.event_name }}" != "schedule" ] || [ "$hour" = "12" ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  build:
+    needs: check
+    if: needs.check.outputs.go == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      # 本仓库：网页和生成脚本
+      - uses: actions/checkout@v4
+
+      # 原仓库：日历程序（只读取，不改动）
+      - uses: actions/checkout@v4
+        with:
+          repository: XiyueZ1/UL-PEPS-piscine-calendar
+          path: tool
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r tool/requirements.txt
+
+      # 只下载一次网页，所有日历都用这一份
+      - name: Download schedule page
+        run: |
+          curl -sSLf --retry 3 --max-time 60 -A "Mozilla/5.0" \
+            "https://peps.ulaval.ca/activite/bains-libres" -o page.html
+
+      # 如果官网改版导致失败，网上的日历保持上一个版本不变
+      - name: Build calendars
+        run: |
+          bash build.sh tool/peps_piscine.py page.html public
+          cp site/index.html public/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
