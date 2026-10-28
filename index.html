@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PEPS piscine · calendrier</title>
+<style>
+  :root {
+    --bg: #f6f8fb; --card: #ffffff; --text: #1d2733; --muted: #5d6b7a;
+    --accent: #0b6fb8; --accent-soft: #e3f0fa; --border: #dde4ec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1720; --card: #17212c; --text: #e6edf3; --muted: #9aa8b6;
+      --accent: #5bb2f0; --accent-soft: #1b3346; --border: #2a3644;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.7rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 20px; }
+  nav.lang { display: flex; gap: 8px; margin-bottom: 24px; }
+  nav.lang button {
+    border: 1px solid var(--border); background: var(--card); color: var(--text);
+    padding: 6px 14px; border-radius: 999px; cursor: pointer; font: inherit;
+  }
+  nav.lang button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .cal {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 14px 16px; margin-bottom: 12px;
+  }
+  .cal h3 { margin: 0 0 8px; font-size: 1.05rem; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .row input {
+    flex: 1 1 260px; min-width: 0; font: 14px ui-monospace, Menlo, Consolas, monospace;
+    padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--bg); color: var(--text);
+  }
+  .row button, .row a {
+    border: 0; border-radius: 8px; padding: 8px 14px; cursor: pointer; font: inherit;
+    background: var(--accent-soft); color: var(--accent); text-decoration: none; white-space: nowrap;
+  }
+  .row button.copied { background: var(--accent); color: #fff; }
+  h2 { font-size: 1.2rem; margin: 32px 0 8px; }
+  ol { padding-left: 1.3em; }
+  li { margin-bottom: 6px; }
+  .note { color: var(--muted); font-size: 0.92rem; }
+  footer { margin-top: 40px; color: var(--muted); font-size: 0.88rem; }
+  a { color: var(--accent); }
+  [data-l] { display: none; }
+  body.fr [data-l="fr"], body.en [data-l="en"], body.zh [data-l="zh"] { display: revert; }
+</style>
+</head>
+<body class="fr">
+<main>
+  <h1>🏊 PEPS piscine</h1>
+  <p class="sub">
+    <span data-l="fr">L'horaire des bains libres du PEPS, directement dans votre agenda.</span>
+    <span data-l="en">The PEPS free swim schedule, right in your calendar.</span>
+    <span data-l="zh">PEPS 自由游泳时间表，直接订阅到你的日历。</span>
+  </p>
+
+  <nav class="lang">
+    <button data-set="fr" aria-pressed="true">Français</button>
+    <button data-set="en" aria-pressed="false">English</button>
+    <button data-set="zh" aria-pressed="false">中文</button>
+  </nav>
+
+  <h2>
+    <span data-l="fr">1. Choisissez un calendrier</span>
+    <span data-l="en">1. Pick a calendar</span>
+    <span data-l="zh">1. 选择一个日历</span>
+  </h2>
+
+  <div id="cals"></div>
+
+  <h2>
+    <span data-l="fr">2. Abonnez-vous</span>
+    <span data-l="en">2. Subscribe</span>
+    <span data-l="zh">2. 订阅</span>
+  </h2>
+
+  <div data-l="fr">
+    <p><strong>Google Agenda</strong> (sur ordinateur)</p>
+    <ol>
+      <li>Copiez le lien du calendrier choisi.</li>
+      <li>Dans Google Agenda, à côté de « Autres agendas », cliquez sur <strong>+</strong>, puis <strong>À partir de l'URL</strong>.</li>
+      <li>Collez le lien et cliquez sur <strong>Ajouter un agenda</strong>.</li>
+    </ol>
+    <p><strong>iPhone, iPad, Mac</strong> : touchez le bouton « Ouvrir », puis confirmez l'abonnement.</p>
+    <p><strong>Outlook</strong> : Ajouter un calendrier, puis S'abonner à partir du Web, et collez le lien.</p>
+    <p class="note">Le calendrier se met à jour automatiquement. Google actualise les agendas abonnés environ une fois par jour.</p>
+  </div>
+  <div data-l="en">
+    <p><strong>Google Calendar</strong> (on a computer)</p>
+    <ol>
+      <li>Copy the link of the calendar you want.</li>
+      <li>In Google Calendar, next to "Other calendars", click <strong>+</strong>, then <strong>From URL</strong>.</li>
+      <li>Paste the link and click <strong>Add calendar</strong>.</li>
+    </ol>
+    <p><strong>iPhone, iPad, Mac</strong>: tap "Open", then confirm the subscription.</p>
+    <p><strong>Outlook</strong>: Add calendar, then Subscribe from web, and paste the link.</p>
+    <p class="note">The calendar updates on its own. Google refreshes subscribed calendars about once a day.</p>
+  </div>
+  <div data-l="zh">
+    <p><strong>Google 日历</strong>（在电脑上操作）</p>
+    <ol>
+      <li>复制你想要的日历链接。</li>
+      <li>在 Google 日历左侧“其他日历”旁点 <strong>+</strong>，选 <strong>通过网址添加</strong>。</li>
+      <li>粘贴链接，点 <strong>添加日历</strong>。</li>
+    </ol>
+    <p><strong>iPhone、iPad、Mac</strong>：点“打开”，再确认订阅。</p>
+    <p><strong>Outlook</strong>：添加日历，选“从网页订阅”，粘贴链接。</p>
+    <p class="note">日历会自动更新。Google 对订阅日历大约每天刷新一次。</p>
+  </div>
+
+  <footer>
+    <p>
+      <span data-l="fr">Dernière mise à jour :</span>
+      <span data-l="en">Last update:</span>
+      <span data-l="zh">最近更新：</span>
+      <span id="updated">…</span>
+    </p>
+    <p>
+      <span data-l="fr">Projet personnel, sans lien avec l'Université Laval ni le PEPS. Vérifiez toujours l'<a href="https://peps.ulaval.ca/activite/bains-libres">horaire officiel</a> avant de vous déplacer.</span>
+      <span data-l="en">Personal project, not affiliated with Université Laval or PEPS. Always check the <a href="https://peps.ulaval.ca/activite/bains-libres">official schedule</a> before you go.</span>
+      <span data-l="zh">个人项目，与拉瓦尔大学和 PEPS 无关。出发前请查看<a href="https://peps.ulaval.ca/activite/bains-libres">官网时间表</a>。</span>
+    </p>
+    <p><a href="https://github.com/XiyueZ1/UL-PEPS-piscine-calendar">GitHub</a></p>
+  </footer>
+</main>
+
+<script>
+  const CALS = [
+    { file: "laps.ics",
+      fr: "Toutes les longueurs (13 ans et +)", en: "All lap swims (13 and over)", zh: "所有游泳场（13 岁以上）" },
+    { file: "olympic.ics",
+      fr: "Piscine olympique seulement", en: "Olympic pool only", zh: "只要奥林匹克池" },
+    { file: "diving.ics",
+      fr: "Piscine avec tremplins seulement", en: "Diving pool only", zh: "只要跳板池" },
+    { file: "25m-plus.ics",
+      fr: "Couloirs de 25 m ou plus", en: "Lanes of 25 m or longer", zh: "25 米及以上的泳道" },
+    { file: "50m.ics",
+      fr: "Couloirs de 50 m seulement", en: "50 m lanes only", zh: "只要 50 米长池" },
+    { file: "family.ics",
+      fr: "Bains pour tous (famille)", en: "Family swims", zh: "家庭场（Bains pour tous）" },
+  ];
+  const LABEL = {
+    copy: { fr: "Copier", en: "Copy", zh: "复制" },
+    copied: { fr: "Copié ✓", en: "Copied ✓", zh: "已复制 ✓" },
+    open: { fr: "Ouvrir", en: "Open", zh: "打开" },
+  };
+  const base = new URL(".", location.href);
+  let lang = "fr";
+  try { const s = localStorage.getItem("lang"); if (s) lang = s; } catch (e) {}
+
+  function render() {
+    document.body.className = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll("nav.lang button").forEach(b =>
+      b.setAttribute("aria-pressed", String(b.dataset.set === lang)));
+    const box = document.getElementById("cals");
+    box.innerHTML = "";
+    for (const c of CALS) {
+      const url = new URL(c.file, base).href;
+      const webcal = url.replace(/^https?:/, "webcal:");
+      const div = document.createElement("div");
+      div.className = "cal";
+      div.innerHTML = `<h3></h3><div class="row"><input readonly><button type="button"></button><a></a></div>`;
+      div.querySelector("h3").textContent = c[lang];
+      const input = div.querySelector("input");
+      input.value = url;
+      input.addEventListener("focus", () => input.select());
+      const btn = div.querySelector("button");
+      btn.textContent = LABEL.copy[lang];
+      btn.addEventListener("click", async () => {
+        try { await navigator.clipboard.writeText(url); }
+        catch (e) { input.select(); document.execCommand("copy"); }
+        btn.textContent = LABEL.copied[lang];
+        btn.classList.add("copied");
+        setTimeout(() => { btn.textContent = LABEL.copy[lang]; btn.classList.remove("copied"); }, 1800);
+      });
+      const a = div.querySelector("a");
+      a.href = webcal;
+      a.textContent = LABEL.open[lang];
+      box.appendChild(div);
+    }
+  }
+
+  document.querySelectorAll("nav.lang button").forEach(b =>
+    b.addEventListener("click", () => {
+      lang = b.dataset.set;
+      try { localStorage.setItem("lang", lang); } catch (e) {}
+      render();
+    }));
+
+  fetch("last-update.txt").then(r => r.ok ? r.text() : "").then(t => {
+    document.getElementById("updated").textContent = t.trim() || "?";
+  }).catch(() => { document.getElementById("updated").textContent = "?"; });
+
+  render();
+</script>
+</body>
+</html>
