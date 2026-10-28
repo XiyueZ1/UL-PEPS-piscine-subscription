@@ -79,7 +79,7 @@ Written with the help of Claude (Anthropic).
 
 ### 工作原理
 
-每周日，GitHub Actions 会下载 PEPS 的时间表，用 [UL-PEPS-piscine-calendar](https://github.com/XiyueZ1/UL-PEPS-piscine-calendar) 里的程序转换成日历。想在自己电脑上运行这个程序，直接下载该程序。
+每周日，GitHub Actions 会下载 PEPS 的时间表，用 [UL-PEPS-piscine-calendar](https://github.com/XiyueZ1/UL-PEPS-piscine-calendar) 里的程序转换成日历。想在自己电脑上运行该程序，可直接下载。
 
 ### 说明
 
