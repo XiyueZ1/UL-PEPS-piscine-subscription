@@ -81,7 +81,7 @@ Written with the help of Claude (Anthropic).
 
 ### 说明
 
-个人项目，与拉瓦尔大学和 PEPS 没有关联。出发前请查看[官网时间表](https://peps.ulaval.ca/activite/bains-libres)。
+个人项目，与拉瓦尔大学和 PEPS 没有关联。出发前请查看[官网时间表](https://peps.ulaval.ca/activite/bains-libres)确认。
 
 代码在 Claude（Anthropic）的协助下编写。
 
