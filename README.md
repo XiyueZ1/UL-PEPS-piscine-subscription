@@ -65,7 +65,7 @@ Written with the help of Claude (Anthropic).
 <a name="中文"></a>
 ## 中文
 
-拉瓦尔大学 PEPS [自由游泳时间表](https://peps.ulaval.ca/activite/bains-libres)的订阅日历，可以直接添加到 Google 日历、Apple 日历或 Outlook。
+拉瓦尔大学 PEPS [游泳池开放时间表](https://peps.ulaval.ca/activite/bains-libres)的订阅日历，可以直接添加到 Google 日历、Apple 日历或 Outlook。
 
 ### 如何订阅
 
