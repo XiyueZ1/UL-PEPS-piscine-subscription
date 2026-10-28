@@ -1,5 +1,7 @@
 # PEPS piscine · subscription
 
+![update-calendar](https://github.com/XiyueZ1/UL-PEPS-piscine-subscription/actions/workflows/update-calendar.yml/badge.svg)
+
 [Français](#français) · [English](#english) · [中文](#中文)
 
 👉 **https://xiyuez1.github.io/UL-PEPS-piscine-subscription/**
