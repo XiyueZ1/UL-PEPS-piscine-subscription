@@ -21,11 +21,11 @@ Calendriers des [bains libres](https://peps.ulaval.ca/activite/bains-libres) du 
 
 Six calendriers sont offerts : toutes les longueurs, piscine olympique, piscine avec tremplins, couloirs de 25 m ou plus, couloirs de 50 m, et bains pour tous.
 
-Les calendriers se mettent à jour chaque dimanche midi. Google actualise les agendas abonnés environ une fois par jour.
+Les calendriers se mettent à jour chaque jour à 22 h. Google actualise les agendas abonnés environ une fois par jour.
 
 ### Fonctionnement
 
-Chaque dimanche, GitHub Actions télécharge l'horaire du PEPS et le convertit avec le programme de [UL-PEPS-piscine-calendar](https://github.com/XiyueZ1/UL-PEPS-piscine-calendar). Pour utiliser ce programme sur votre ordinateur, consultez ce dépôt.
+Chaque soir, GitHub Actions télécharge l'horaire du PEPS et le convertit avec le programme de [UL-PEPS-piscine-calendar](https://github.com/XiyueZ1/UL-PEPS-piscine-calendar). Pour utiliser ce programme sur votre ordinateur, consultez ce dépôt.
 
 ### Avis
 
@@ -48,11 +48,11 @@ Calendars of the PEPS [swimming pool schedule](https://peps.ulaval.ca/activite/b
 
 Six calendars are available: all lap swims, Olympic pool, diving pool, lanes of 25 m or longer, 50 m lanes, and family swims.
 
-The calendars update every Sunday at noon. Google refreshes subscribed calendars about once a day.
+The calendars update every day at 10 pm. Google refreshes subscribed calendars about once a day.
 
 ### How it works
 
-Every Sunday, GitHub Actions downloads the PEPS schedule and converts it with the program from [UL-PEPS-piscine-calendar](https://github.com/XiyueZ1/UL-PEPS-piscine-calendar). To run that program on your own computer, see that repository.
+Every night, GitHub Actions downloads the PEPS schedule and converts it with the program from [UL-PEPS-piscine-calendar](https://github.com/XiyueZ1/UL-PEPS-piscine-calendar). To run that program on your own computer, see that repository.
 
 ### Disclaimer
 
@@ -75,11 +75,11 @@ Written with the help of Claude (Anthropic).
 
 一共有六个日历：所有游泳场、奥林匹克池、跳板池、25 米及以上泳道、50 米泳道、家庭场。
 
-日历每周日中午自动更新。
+日历每天夜间自动更新。
 
 ### 工作原理
 
-每周日，GitHub Actions 会下载 PEPS 的时间表，用 [UL-PEPS-piscine-calendar](https://github.com/XiyueZ1/UL-PEPS-piscine-calendar) 里的程序转换成日历。想在自己电脑上运行该程序，可直接下载。
+每天夜间，GitHub Actions 会下载 PEPS 的时间表，用 [UL-PEPS-piscine-calendar](https://github.com/XiyueZ1/UL-PEPS-piscine-calendar) 里的程序转换成日历。想在自己电脑上运行该程序，可直接下载。
 
 ### 说明
 
