@@ -49,18 +49,31 @@
   ol { padding-left: 1.3em; }
   li { margin-bottom: 6px; }
   .note { color: var(--muted); font-size: 0.92rem; }
+  .android {
+    display: none; background: var(--accent-soft); border-radius: 12px;
+    padding: 12px 16px; margin-bottom: 12px;
+  }
+  body.is-android .android { display: block; }
+  /* Android 上“打开”按钮没有作用，直接隐藏 */
+  body.is-android .row a { display: none; }
+  body.is-android .android [data-l] { display: none; }
+  body.is-android.fr .android [data-l="fr"], body.is-android.en .android [data-l="en"], body.is-android.zh .android [data-l="zh"] { display: revert; }
   footer { margin-top: 40px; color: var(--muted); font-size: 0.88rem; }
   a { color: var(--accent); }
   [data-l] { display: none; }
   body.fr [data-l="fr"], body.en [data-l="en"], body.zh [data-l="zh"] { display: revert; }
 </style>
+<!-- 访问统计（GoatCounter）：不用 cookie，不收集个人信息。
+     统计页面: https://peps-piscine.goatcounter.com -->
+<script data-goatcounter="https://peps-piscine.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </head>
 <body class="fr">
 <main>
   <h1>🏊 PEPS piscine</h1>
   <p class="sub">
     <span data-l="fr">L'horaire des bains libres du PEPS, directement dans votre agenda.</span>
-    <span data-l="en">The PEPS free swim schedule, right in your calendar.</span>
+    <span data-l="en">The PEPS swimming pool schedule, right in your calendar.</span>
     <span data-l="zh">PEPS 自由游泳时间表，直接订阅到你的日历。</span>
   </p>
 
@@ -75,6 +88,12 @@
     <span data-l="en">1. Pick a calendar</span>
     <span data-l="zh">1. 选择一个日历</span>
   </h2>
+
+  <div class="android">
+    <span data-l="fr">📱 <strong>Android :</strong> l'abonnement direct ne fonctionne pas sur Android. Copiez le lien, puis ajoutez-le dans Google Agenda <strong>sur un ordinateur</strong> (voir l'étape 2). Le calendrier apparaîtra ensuite sur votre téléphone.</span>
+    <span data-l="en">📱 <strong>Android:</strong> direct subscription does not work on Android. Copy the link, then add it in Google Calendar <strong>on a computer</strong> (see step 2). The calendar will then show up on your phone.</span>
+    <span data-l="zh">📱 <strong>Android 用户：</strong>Android 手机不能直接订阅。请复制链接，然后<strong>在电脑上</strong>用 Google 日历网页版添加（见第 2 步）。添加后，日历会自动出现在你的手机上。</span>
+  </div>
 
   <div id="cals"></div>
 
@@ -92,6 +111,7 @@
       <li>Collez le lien et cliquez sur <strong>Ajouter un agenda</strong>.</li>
     </ol>
     <p><strong>iPhone, iPad, Mac</strong> : touchez le bouton « Ouvrir », puis confirmez l'abonnement.</p>
+    <p><strong>Android</strong> : l'application Google Agenda ne permet pas d'ajouter un calendrier par lien. Faites les étapes ci-dessus sur un ordinateur. Si le calendrier n'apparaît pas sur le téléphone, ouvrez Google Agenda, puis Paramètres, touchez le nom du calendrier et activez la synchronisation.</p>
     <p><strong>Outlook</strong> : Ajouter un calendrier, puis S'abonner à partir du Web, et collez le lien.</p>
     <p class="note">Le calendrier se met à jour automatiquement. Google actualise les agendas abonnés environ une fois par jour.</p>
   </div>
@@ -103,6 +123,7 @@
       <li>Paste the link and click <strong>Add calendar</strong>.</li>
     </ol>
     <p><strong>iPhone, iPad, Mac</strong>: tap "Open", then confirm the subscription.</p>
+    <p><strong>Android</strong>: the Google Calendar app cannot add a calendar from a link. Do the steps above on a computer. If the calendar does not show up on your phone, open Google Calendar, go to Settings, tap the calendar name and turn on Sync.</p>
     <p><strong>Outlook</strong>: Add calendar, then Subscribe from web, and paste the link.</p>
     <p class="note">The calendar updates on its own. Google refreshes subscribed calendars about once a day.</p>
   </div>
@@ -114,6 +135,7 @@
       <li>粘贴链接，点 <strong>添加日历</strong>。</li>
     </ol>
     <p><strong>iPhone、iPad、Mac</strong>：点“打开”，再确认订阅。</p>
+    <p><strong>Android</strong>：Google 日历手机 app 不能通过链接添加日历，请在电脑上完成上面的步骤。如果手机上没有显示，打开 Google 日历 app，进入“设置”，点这个日历的名字，打开“同步”。</p>
     <p><strong>Outlook</strong>：添加日历，选“从网页订阅”，粘贴链接。</p>
     <p class="note">日历会自动更新。Google 对订阅日历大约每天刷新一次。</p>
   </div>
@@ -128,7 +150,7 @@
     <p>
       <span data-l="fr">Projet personnel, sans lien avec l'Université Laval ni le PEPS. Vérifiez toujours l'<a href="https://peps.ulaval.ca/activite/bains-libres">horaire officiel</a> avant de vous déplacer.</span>
       <span data-l="en">Personal project, not affiliated with Université Laval or PEPS. Always check the <a href="https://peps.ulaval.ca/activite/bains-libres">official schedule</a> before you go.</span>
-      <span data-l="zh">个人项目，与拉瓦尔大学和 PEPS 无关。出发前请查看<a href="https://peps.ulaval.ca/activite/bains-libres">官网时间表</a>。</span>
+      <span data-l="zh">个人项目，与拉瓦尔大学和 PEPS 无关。出发前请查看<a href="https://peps.ulaval.ca/activite/bains-libres">官网时间表</a>确认。</span>
     </p>
     <p><a href="https://github.com/XiyueZ1/UL-PEPS-piscine-calendar">GitHub</a></p>
   </footer>
@@ -155,11 +177,20 @@
     open: { fr: "Ouvrir", en: "Open", zh: "打开" },
   };
   const base = new URL(".", location.href);
+
+  // 记录按钮点击（复制或打开某个日历），在 GoatCounter 里显示为事件
+  function track(action, file) {
+    try {
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: action + "-" + file.replace(".ics", ""), title: action + " " + file, event: true });
+      }
+    } catch (e) {}
+  }
   let lang = "fr";
   try { const s = localStorage.getItem("lang"); if (s) lang = s; } catch (e) {}
 
   function render() {
-    document.body.className = lang;
+    document.body.className = lang + (/android/i.test(navigator.userAgent) ? " is-android" : "");
     document.documentElement.lang = lang;
     document.querySelectorAll("nav.lang button").forEach(b =>
       b.setAttribute("aria-pressed", String(b.dataset.set === lang)));
@@ -178,6 +209,7 @@
       const btn = div.querySelector("button");
       btn.textContent = LABEL.copy[lang];
       btn.addEventListener("click", async () => {
+        track("copy", c.file);
         try { await navigator.clipboard.writeText(url); }
         catch (e) { input.select(); document.execCommand("copy"); }
         btn.textContent = LABEL.copied[lang];
@@ -186,6 +218,7 @@
       });
       const a = div.querySelector("a");
       a.href = webcal;
+      a.addEventListener("click", () => track("open", c.file));
       a.textContent = LABEL.open[lang];
       box.appendChild(div);
     }
@@ -202,6 +235,7 @@
     document.getElementById("updated").textContent = t.trim() || "?";
   }).catch(() => { document.getElementById("updated").textContent = "?"; });
 
+  if (/android/i.test(navigator.userAgent)) document.body.classList.add("is-android");
   render();
 </script>
 </body>
