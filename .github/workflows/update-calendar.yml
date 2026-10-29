@@ -43,15 +43,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # 本仓库：网页和生成脚本
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # 原仓库：日历程序（只读取，不改动）
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           repository: XiyueZ1/UL-PEPS-piscine-calendar
           path: tool
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
@@ -69,7 +69,7 @@ jobs:
           bash build.sh tool/peps_piscine.py page.html public
           cp site/index.html public/
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: public
 
@@ -81,4 +81,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
