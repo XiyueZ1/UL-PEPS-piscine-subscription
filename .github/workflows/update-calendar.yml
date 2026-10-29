@@ -2,10 +2,10 @@ name: update-calendar
 
 on:
   schedule:
-    # 每周日魁北克时间中午 12 点运行。
+    # 每天魁北克时间晚上 10 点运行。
     # GitHub 只认 UTC 时间，而魁北克有夏令时（夏天 UTC-4，冬天 UTC-5），
-    # 所以在 UTC 16 点和 17 点各触发一次，再由下面的 check 步骤只放行魁北克 12 点那一次。
-    - cron: "0 16,17 * * 0"
+    # 所以在 UTC 2 点和 3 点各触发一次，再由下面的 check 步骤只放行魁北克 22 点那一次。
+   	- cron: "0 2,3 * * *" 
   # 允许在 Actions 页面手动运行
   workflow_dispatch:
   # 改了网页或生成脚本后，自动重新发布
@@ -31,7 +31,7 @@ jobs:
         run: |
           hour=$(TZ=America/Toronto date +%H)
           echo "Québec time: $(TZ=America/Toronto date)"
-          if [ "${{ github.event_name }}" != "schedule" ] || [ "$hour" = "12" ]; then
+          if [ "${{ github.event_name }}" != "schedule" ] || [ "$hour" = "22" ]; then
             echo "go=true" >> "$GITHUB_OUTPUT"
           else
             echo "go=false" >> "$GITHUB_OUTPUT"
