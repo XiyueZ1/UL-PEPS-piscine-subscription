@@ -49,6 +49,11 @@
   ol { padding-left: 1.3em; }
   li { margin-bottom: 6px; }
   .note { color: var(--muted); font-size: 0.92rem; }
+  .android {
+    display: none; background: var(--accent-soft); border-radius: 12px;
+    padding: 12px 16px; margin-bottom: 12px;
+  }
+  body.is-android .android { display: block; }
   footer { margin-top: 40px; color: var(--muted); font-size: 0.88rem; }
   a { color: var(--accent); }
   [data-l] { display: none; }
@@ -80,6 +85,12 @@
     <span data-l="zh">1. 选择一个日历</span>
   </h2>
 
+  <div class="android">
+    <span data-l="fr">📱 <strong>Android :</strong> essayez d'abord « Ouvrir ». Si rien ne se passe, copiez le lien et ajoutez-le dans Google Agenda <strong>sur un ordinateur</strong> (voir l'étape 2). Le calendrier apparaîtra ensuite sur votre téléphone.</span>
+    <span data-l="en">📱 <strong>Android:</strong> try "Open" first. If nothing happens, copy the link and add it in Google Calendar <strong>on a computer</strong> (see step 2). The calendar will then show up on your phone.</span>
+    <span data-l="zh">📱 <strong>Android 用户：</strong>先试试点“打开”。如果没有反应，请复制链接，<strong>在电脑上</strong>用 Google 日历网页版添加（见第 2 步）。添加后，日历会自动出现在你的手机上。</span>
+  </div>
+
   <div id="cals"></div>
 
   <h2>
@@ -96,6 +107,7 @@
       <li>Collez le lien et cliquez sur <strong>Ajouter un agenda</strong>.</li>
     </ol>
     <p><strong>iPhone, iPad, Mac</strong> : touchez le bouton « Ouvrir », puis confirmez l'abonnement.</p>
+    <p><strong>Android</strong> : sur certains téléphones (par exemple Xiaomi), « Ouvrir » ajoute le calendrier directement. Sinon, l'application Google Agenda ne permet pas d'ajouter un calendrier par lien. Faites alors les étapes ci-dessus sur un ordinateur. Si le calendrier n'apparaît pas sur le téléphone, ouvrez Google Agenda, puis Paramètres, touchez le nom du calendrier et activez la synchronisation.</p>
     <p><strong>Outlook</strong> : Ajouter un calendrier, puis S'abonner à partir du Web, et collez le lien.</p>
     <p class="note">Le calendrier se met à jour automatiquement. Google actualise les agendas abonnés environ une fois par jour.</p>
   </div>
@@ -107,6 +119,7 @@
       <li>Paste the link and click <strong>Add calendar</strong>.</li>
     </ol>
     <p><strong>iPhone, iPad, Mac</strong>: tap "Open", then confirm the subscription.</p>
+    <p><strong>Android</strong>: on some phones (for example Xiaomi), "Open" adds the calendar directly. If not, the Google Calendar app cannot add a calendar from a link, so do the steps above on a computer. If the calendar does not show up on your phone, open Google Calendar, go to Settings, tap the calendar name and turn on Sync.</p>
     <p><strong>Outlook</strong>: Add calendar, then Subscribe from web, and paste the link.</p>
     <p class="note">The calendar updates on its own. Google refreshes subscribed calendars about once a day.</p>
   </div>
@@ -118,6 +131,7 @@
       <li>粘贴链接，点 <strong>添加日历</strong>。</li>
     </ol>
     <p><strong>iPhone、iPad、Mac</strong>：点“打开”，再确认订阅。</p>
+    <p><strong>Android</strong>：有些手机（比如小米）点“打开”就能直接添加。如果不行，是因为 Google 日历手机 app 不支持通过链接添加，请在电脑上完成上面的步骤。如果手机上没有显示，打开 Google 日历 app，进入“设置”，点这个日历的名字，打开“同步”。</p>
     <p><strong>Outlook</strong>：添加日历，选“从网页订阅”，粘贴链接。</p>
     <p class="note">日历会自动更新。Google 对订阅日历大约每天刷新一次。</p>
   </div>
@@ -172,7 +186,7 @@
   try { const s = localStorage.getItem("lang"); if (s) lang = s; } catch (e) {}
 
   function render() {
-    document.body.className = lang;
+    document.body.className = lang + (/android/i.test(navigator.userAgent) ? " is-android" : "");
     document.documentElement.lang = lang;
     document.querySelectorAll("nav.lang button").forEach(b =>
       b.setAttribute("aria-pressed", String(b.dataset.set === lang)));
