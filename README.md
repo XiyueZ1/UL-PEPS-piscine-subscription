@@ -48,7 +48,7 @@ Calendars of the PEPS [swimming pool schedule](https://peps.ulaval.ca/activite/b
 
 Six calendars are available: all lap swims, Olympic pool, diving pool, lanes of 25 m or longer, 50 m lanes, and family swims.
 
-The calendars update every day at 2 am. Google refreshes subscribed calendars about once a day.
+The calendars update every day around 2 am. Google refreshes subscribed calendars about once a day.
 
 ### How it works
 
