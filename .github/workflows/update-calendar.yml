@@ -2,10 +2,9 @@ name: update-calendar
 
 on:
   schedule:
-    # 每天魁北克时间凌晨2点运行。
-    # GitHub 只认 UTC 时间，而魁北克有夏令时（夏天 UTC-4，冬天 UTC-5），
-    # 所以在 UTC 6 点和 7 点各触发一次，再由下面的 check 步骤只放行魁北克 2 点一次。
-  - cron: "17 6,7 * * *"
+    # 每天凌晨运行一次（UTC 6:17）。
+    # 夏令时QC 2:17，冬令时 1:17。
+    - cron: "17 6 * * *"
   # 允许在 Actions 页面手动运行
   workflow_dispatch:
   # 改了网页或生成脚本后，自动重新发布
@@ -22,30 +21,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
-    outputs:
-      go: ${{ steps.time.outputs.go }}
-    steps:
-      - id: time
-        run: |
-          hour=$(TZ=America/Toronto date +%H)
-          echo "Québec time: $(TZ=America/Toronto date)"
-          if [ "${{ github.event_name }}" != "schedule" ] || [ "$hour" -le 6 ]; then
-            echo "go=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "go=false" >> "$GITHUB_OUTPUT"
-          fi
-
   build:
-    needs: check
-    if: needs.check.outputs.go == 'true'
     runs-on: ubuntu-latest
     steps:
       # 本仓库：网页和生成脚本
       - uses: actions/checkout@v7
 
-      # 原仓库：日历程序（只读取，不改动）
+      # 原仓库：读取日历程序
       - uses: actions/checkout@v7
         with:
           repository: XiyueZ1/UL-PEPS-piscine-calendar
@@ -57,7 +39,7 @@ jobs:
 
       - run: pip install -r tool/requirements.txt
 
-      # 只下载一次网页，所有日历都用这一份
+      # 只下载一次网页
       - name: Download schedule page
         run: |
           curl -sSLf --retry 3 --max-time 60 -A "Mozilla/5.0" \
