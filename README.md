@@ -21,11 +21,11 @@ Calendriers des [bains libres](https://peps.ulaval.ca/activite/bains-libres) du 
 
 Six calendriers sont offerts : toutes les longueurs, piscine olympique, piscine avec tremplins, couloirs de 25 m ou plus, couloirs de 50 m, et bains pour tous.
 
-Les calendriers se mettent à jour chaque jour à 22 h. Google actualise les agendas abonnés environ une fois par jour.
+Les calendriers se mettent à jour chaque nuit vers 2 h. Google actualise les agendas abonnés environ une fois par jour.
 
 ### Fonctionnement
 
-Chaque soir, GitHub Actions télécharge l'horaire du PEPS et le convertit avec le programme de [UL-PEPS-piscine-calendar](https://github.com/XiyueZ1/UL-PEPS-piscine-calendar). Pour utiliser ce programme sur votre ordinateur, consultez ce dépôt.
+Chaque nuit, GitHub Actions télécharge l'horaire du PEPS et le convertit avec le programme de [UL-PEPS-piscine-calendar](https://github.com/XiyueZ1/UL-PEPS-piscine-calendar). Pour utiliser ce programme sur votre ordinateur, consultez ce dépôt.
 
 ### Avis
 
@@ -48,7 +48,7 @@ Calendars of the PEPS [swimming pool schedule](https://peps.ulaval.ca/activite/b
 
 Six calendars are available: all lap swims, Olympic pool, diving pool, lanes of 25 m or longer, 50 m lanes, and family swims.
 
-The calendars update every day at 10 pm. Google refreshes subscribed calendars about once a day.
+The calendars update every day at 2 am. Google refreshes subscribed calendars about once a day.
 
 ### How it works
 
